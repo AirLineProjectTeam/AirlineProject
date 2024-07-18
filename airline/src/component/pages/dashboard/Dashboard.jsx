@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom'; 
-import React from 'react';
+import React, {useEffect} from 'react';
+import instance from "../../firebase/instance";
 
-function Dashboard(){
-    return(
-        <>
-         Hello
-        </>
-    )
 
-}
-export default Dashboard ;
+  
+
+    function Dashboard() {
+        
+
+     
+
+
+      }
+      
+      export default Dashboard;
