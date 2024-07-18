@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import React from 'react';
+import './index.css';
+
 
 function Home() {
     return (
