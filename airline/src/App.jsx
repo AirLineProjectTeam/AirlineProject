@@ -2,19 +2,16 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import React from 'react';
 import './index.css';
 import Dashboard from './component/pages/dashboard/Dashboard';
+import Home from './component/pages/homePage/Homepage';
 
-function Home() {
+function App() {
     return (
-        <Router>
-            <div>
-                <ul>
-                    <li className="mr-5">
-                        <Link to="/home" className="no-underline text-black">Home</Link>
-                    </li>
-                </ul>
-            </div>
-        </Router>
+
+        <div>
+         <Home />
+        
+        </div>
     );
 }
 
-export default Home;
+export default App;
