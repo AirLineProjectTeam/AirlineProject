@@ -16,6 +16,7 @@ function Home() {
 </Routes>
 </BrowserRouter>
   </ContextProvider>;
+
 }
 
 export default App;
