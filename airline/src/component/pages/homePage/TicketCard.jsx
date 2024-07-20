@@ -89,10 +89,10 @@ const TicketCard = () => {
               <div className="bg-gray-100 flex items-center justify-between p-4">
                 <div>
                   <p className="text-lg font-semibold text-red-600">
-                    <del>${trip.Price}</del>
+                    <del>${trip.price}</del>
                   </p>
                   <p className="text-lg font-semibold text-green-600">
-                    ${calculateDiscountedPrice(trip.Price)}
+                    ${calculateDiscountedPrice(trip.price)}
                   </p>
                   <p className="text-sm text-gray-600">Price per adult</p>
                 </div>
