@@ -3,7 +3,7 @@ import { firebaseURL } from "../../../firebase/firebase-config";
 export const getUserData = (userID) => {
   return new Promise((resolve, reject) => {
     axios
-      .get(`${firebaseURL}/Users/${userID}`)
+      .get(`${firebaseURL}/Users/${userID}.json`)
       .then((response) => {
         if (response) resolve(response.data);
       })

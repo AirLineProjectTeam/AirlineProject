@@ -17,7 +17,7 @@ export const reserveTicket = (user, flight, ticket, flightID) => {
     flight.availableSeats--;
 
     await axios
-      .put(firebaseURL + "/trips/" + flightID, flight)
+      .put(firebaseURL + "/trips/Trips/" + flightID, flight)
       .then(async () => {
         let response = await axios.put(
           firebaseURL + "/trips/" + "Users/" + user.userID,
