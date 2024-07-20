@@ -1,13 +1,13 @@
 import { getCurrentDate } from "./getCurrentDate";
 import { setUserData } from "./setUserData";
-export const checkExpiration = (user) => {
+export const checkExpiration = async (user) => {
   let date = parseDate(getCurrentDate());
   let expirationDate = 0;
   for (let i = 0; i < user.copouns.length; i++) {
     expirationDate = parseDate(user.copouns[i]);
     if (date > expirationDate) user.copouns[i].isExpired = true;
   }
-  setUserData(user);
+  await setUserData(user);
 };
 
 const parseDate = (dateStr) => {

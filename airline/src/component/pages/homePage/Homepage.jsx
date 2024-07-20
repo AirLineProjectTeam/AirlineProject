@@ -11,14 +11,14 @@ import MyLocation from '../geolocation/Geolocation';
 function Home(){
     return(
         <>
-        <Header/>
+       
         <HomeSlider/>
         <Features/>
         <TeamSection/>
         <TicketCard/>
         <CardsHome />
         <MyLocation/>
-        <Footer/>
+        
 
           {/* <ul>
            <li className="mr-5"><Link to="/Home" className="no-underline text-black">Home</Link></li>

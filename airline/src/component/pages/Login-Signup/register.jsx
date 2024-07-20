@@ -8,13 +8,17 @@ import { setUserData } from "./Controllers/setUserData";
 import { Copoun } from "../../../models/copoun";
 import { getCurrentDate } from "./Controllers/getCurrentDate";
 import { User } from "../../../models/user";
-
+import { Link } from "react-router-dom";
+import formBackground from "./assets/bglsignup.png";
+import background from "./assets/backg.jpg";
+import { useNavigate } from "react-router-dom";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [phoneNumber, setPhone] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -50,8 +54,9 @@ function Register() {
       toast.success("User Registered Successfully!!", {
         position: "top-center",
       });
+      navigate("/");
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       toast.error(error.message, {
         position: "bottom-center",
       });
@@ -59,71 +64,106 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <h3>Sign Up</h3>
+    <div
+      className="flex items-center justify-center min-h-screen bg-gray-100"
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div
+        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md"
+        style={{
+          backgroundImage: `url(${formBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <h3 className="text-2xl font-semibold text-center mb-6">Sign Up</h3>
+        <form onSubmit={handleRegister}>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              First name
+            </label>
+            <input
+              type="text"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="First name"
+              onChange={(e) => setFname(e.target.value)}
+              required
+            />
+          </div>
 
-      <div className="mb-3">
-        <label>First name</label>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="First name"
-          onChange={(e) => setFname(e.target.value)}
-          required
-        />
-      </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Last name
+            </label>
+            <input
+              type="text"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="Last name"
+              onChange={(e) => setLname(e.target.value)}
+              required
+            />
+          </div>
 
-      <div className="mb-3">
-        <label>Last name</label>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Last name"
-          onChange={(e) => setLname(e.target.value)}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label>Phone-Number</label>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Phone Number"
-          onChange={(e) => setPhone(e.target.value)}
-        />
-      </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number
+            </label>
+            <input
+              type="text"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="Phone Number"
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
 
-      <div className="mb-3">
-        <label>Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          placeholder="Enter email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-      <div className="mb-3">
-        <label>Password</label>
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Enter password"
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              placeholder="Enter password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-      <div className="d-grid">
-        <button type="submit" className="btn btn-primary">
-          Sign Up
-        </button>
+          <div className="mb-4">
+            <button
+              type="submit"
+              className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Sign Up
+            </button>
+          </div>
+
+          <p className="text-sm text-gray-600 text-right">
+            Already registered{" "}
+            <Link to="/Login" className="text-blue-600 hover:underline">
+              Login
+            </Link>
+          </p>
+        </form>
       </div>
-      <p className="forgot-password text-right">
-        Already registered <a href="/login">Login</a>
-      </p>
-    </form>
+    </div>
   );
 }
 export default Register;
