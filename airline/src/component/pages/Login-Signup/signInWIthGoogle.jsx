@@ -1,7 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth, db } from "./firebase";
+import { auth } from "./firebase";
 import { toast } from "react-toastify";
-import { setDoc, doc } from "firebase/firestore";
+
 import { User } from "../../../models/user";
 
 import googleLogo from "./assets/google.png";
@@ -39,7 +39,7 @@ function SignInwithGoogle() {
           toast.success("User logged in Successfully", {
             position: "top-center",
           });
-          
+
         }
       }
     });

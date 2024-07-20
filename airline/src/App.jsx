@@ -8,15 +8,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TicketsCatalogue from "./component/pages/ticketsCatalogue/TicketsCatalogue";
 
 function App() {
-  return (
-    <ContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<TicketsCatalogue />} />
-        </Routes>
-      </BrowserRouter>
-    </ContextProvider>
-  );
+  return <ContextProvider>
+<BrowserRouter>
+<Routes>
+    <Route >
+        
+    </Route>
+</Routes>
+</BrowserRouter>
+  </ContextProvider>;
 }
 
 export default App;

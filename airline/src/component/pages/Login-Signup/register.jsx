@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
-import { auth, db } from "./firebase";
-import { setDoc, doc } from "firebase/firestore";
+import { useState } from "react";
+import { auth } from "../../firebase/firebase-config";
+
 import { toast } from "react-toastify";
 
 import { setUserData } from "./Controllers/setUserData";

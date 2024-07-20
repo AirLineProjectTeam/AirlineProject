@@ -1,10 +1,10 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
-import { auth, db } from "./firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import  { useState } from "react";
+import { auth } from "../../firebase/firebase-config";
+
 import { toast } from "react-toastify";
 import SignInwithGoogle from "./signInWIthGoogle";
-import { getRandomCoupon } from "./coupons";
+
 import { getUserData } from "./Controllers/getUserData";
 
 function Login() {
@@ -17,6 +17,7 @@ function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       const currentUser = auth.currentUser;
       let user = await getUserData(currentUser.uid);
+      
       if (user) {
         toast.success("User logged in Successfully", {
           position: "top-center",
