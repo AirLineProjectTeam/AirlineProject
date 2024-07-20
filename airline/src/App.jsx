@@ -4,12 +4,19 @@ import './index.css';
 import Dashboard from './component/pages/dashboard/Dashboard';
 import Home from './component/pages/homePage/Homepage';
 
+
+
 function App() {
     return (
 
         <div>
          <Home />
-        
+         <Dashboard/>
+
+
+         
+
+
         </div>
     );
 }
