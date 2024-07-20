@@ -54,6 +54,15 @@ function SideBar(){
             <Link to="/AllTicketDash">Tickets</Link>
             
           </ListItem>
+
+          <ListItem>
+            <ListItemPrefix>
+              <Cog6ToothIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            <Link to="/Profile">Profile</Link>
+          </ListItem>
+
+
           <ListItem>
             <ListItemPrefix>
               <InboxIcon className="h-5 w-5" />
@@ -65,12 +74,7 @@ function SideBar(){
             </ListItemSuffix>
           </ListItem>
           
-          <ListItem>
-            <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            coupons
-          </ListItem>
+          
           <ListItem>
             <ListItemPrefix>
               <PowerIcon className="h-5 w-5" />

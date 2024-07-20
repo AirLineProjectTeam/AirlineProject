@@ -5,18 +5,25 @@ import Dashboard from "./component/pages/dashboard/Dashboard";
 import { PaypalButton } from "./component/pages/checkoutPage/paypalbutton";
 import { ContextProvider } from "./component/sharedComponents/contextProvider";
 import { BrowserRouter , Route, Routes } from "react-router-dom";
+import Home from "./component/pages/homePage/Homepage";
 
-function Home() {
-  return <ContextProvider>
-<BrowserRouter>
-<Routes>
-    <Route>
+function App() {
+//   return <ContextProvider>
+// <BrowserRouter>
+// <Routes>
+//     <Route>
         
-    </Route>
-</Routes>
-</BrowserRouter>
-  </ContextProvider>;
+//     </Route>
+// </Routes>
+// </BrowserRouter>
+//   </ContextProvider>;
+return(
+  <>
+  <Home />
+   <Dashboard/>
+  </>
+)
 
 }
 
-export default App;
+export default App ;
