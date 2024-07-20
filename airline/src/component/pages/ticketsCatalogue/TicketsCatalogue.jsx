@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
-
+import { Context } from "../../sharedComponents/contextProvider";
+import { useContext } from "react";
+import { useNavigate } from "react-router";
 const TicketsCatalogue = () => {
   const [tickets, setTickets] = useState([]);
   const [search, setSearch] = useState([]);
@@ -12,7 +14,8 @@ const TicketsCatalogue = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 10;
   const maxPages = 5;
-
+  const [trip, setTrip] = useContext(Context).trip;
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get(
@@ -70,7 +73,8 @@ const TicketsCatalogue = () => {
 
   // sessionStorage
   const saveData = (ticket) => {
-    sessionStorage.setItem(`Data`, JSON.stringify(ticket));
+    setTrip(ticket);
+    navigate("/FlightDetails");
   };
 
   return (
