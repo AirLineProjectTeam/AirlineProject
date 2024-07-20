@@ -11,7 +11,7 @@ import MyLocation from '../geolocation/Geolocation';
 function Home(){
     return(
         <>
-       
+
         <HomeSlider/>
         <Features/>
         <TeamSection/>

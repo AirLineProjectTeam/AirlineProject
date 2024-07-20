@@ -3,6 +3,8 @@ import "./index.css";
 import Dashboard from "./component/pages/dashboard/Dashboard";
 import { PaypalButton } from "./component/pages/checkoutPage/paypalbutton";
 import { ContextProvider } from "./component/sharedComponents/contextProvider";
+
+
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import TicketsCatalogue from "./component/pages/ticketsCatalogue/TicketsCatalogue";
 import Home from "./component/pages/homePage/Homepage";
@@ -28,6 +30,7 @@ function Content() {
   const hideHeaderFooter =
     location.pathname === "/Login" || location.pathname === "/Signup";
 
+
   return (
     <>
       {!hideHeaderFooter && <Header />}
@@ -46,4 +49,4 @@ function Content() {
   );
 }
 
-export default App;
+export default App ;
