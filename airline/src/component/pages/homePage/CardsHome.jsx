@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Image from "./Assets/Image1.jpg";
+import { Context } from "../../sharedComponents/contextProvider";
+import { useNavigate } from "react-router";
 
 function CardsHome() {
   const [trips, setTrips] = useState([]);
   const [lowestPrice, setLowestPrice] = useState(null);
+  const [selectedTrip, setSelected] = useContext(Context).trip;
+  const [progress, setProgress] = useContext(Context).progress;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -34,12 +39,18 @@ function CardsHome() {
 
   const handleTripClick = (trip) => {
     trips.map(() => {
+      setSelected(trip);
+      setProgress("Details")
+      navigate("/PaymentPage");
+
       sessionStorage.setItem("trip", JSON.stringify(trip));
       console.log(trip);
+
     });
   };
 
   return (
+
     <div className="bg-gradient-to-br from-purple-200 to-red-200 p-20">
       <div className="mt-5 sm:mt-40 text-center mb-6 sm:mb-10">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">

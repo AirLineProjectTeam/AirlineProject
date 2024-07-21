@@ -2,8 +2,11 @@ import Logo from "./assets/LOGO.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../sharedComponents/contextProvider";
 
 const Header = () => {
+  const [currentUser,setUser]=useContext(Context).user;
   const [highlighted, setHighlight] = useState("Home");
   const navigate = useNavigate();
   return (
@@ -40,13 +43,7 @@ const Header = () => {
           >
             Support
           </Link>
-          <Link
-            to="/About"
-            className={highlighted == "Team" ? "text-red-500" : "text-gray-600"}
-            onClick={() => setHighlight("Team")}
-          >
-            Team
-          </Link>
+          
         </nav>
         <div className="flex items-center space-x-4">
           <button

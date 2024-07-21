@@ -1,12 +1,22 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Logo from "../header/assets/LOGO.png";
+import { Context } from "../../sharedComponents/contextProvider";
+import { useNavigate } from "react-router";
+
+import Logo from "../header/assets/LOGO.png";
 import { MdDiscount } from "react-icons/md";
+
 
 const TicketCard = () => {
   const [trips, setTrips] = useState([]);
   const [lowestPrice, setLowestPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
+  const navigate = useNavigate();
+
+  const [selectedTrip, setSelected] = useContext(Context).trip;
+  const [progress, setProgress] = useContext(Context).progress;
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -41,8 +51,13 @@ const TicketCard = () => {
   }, []);
 
   const handleTripClick = (trip) => {
+
+    setSelected(trip);
+    setProgress("Details");
+    navigate("/PaymentPage");
     sessionStorage.setItem("trip", JSON.stringify(trip));
     console.log(trip);
+
   };
 
   const calculateDiscountedPrice = (price) => {
@@ -52,9 +67,11 @@ const TicketCard = () => {
 
   return (
     <>
+
       <h2 className="flex justify-evenly text-3xl font-bold  mb-4 mt-14">
         Discounted Ticket Specials:
       </h2>
+
 
       <h4 className="text-lg text-center mb-0">
         Explore our current promotions on the most economical tickets available.
@@ -66,6 +83,7 @@ const TicketCard = () => {
 
         <div className="flex flex-wrap gap-4 justify-evenly">
           {trips.map((trip) => (
+
             <div
               key={trip.id}
               className="mb-4 w-96 transform transition-transform duration-300 hover:scale-110"
@@ -94,6 +112,7 @@ const TicketCard = () => {
                     </div>
                   </div>
                 </div>
+
 
                 {/* Flight Details */}
                 <div className="p-4 bg-gradient-to-br from-purple-200 to-red-200">
@@ -129,6 +148,8 @@ const TicketCard = () => {
                     Book Now
                   </button>
                 </div>
+
+
               </div>
             </div>
           ))}
