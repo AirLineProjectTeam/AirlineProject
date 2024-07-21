@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { Context } from "../../sharedComponents/contextProvider";
-import { useContext } from "react";
 import { useNavigate } from "react-router";
+
 const TicketsCatalogue = () => {
   const [tickets, setTickets] = useState([]);
   const [search, setSearch] = useState([]);
@@ -14,8 +14,9 @@ const TicketsCatalogue = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 10;
   const maxPages = 5;
-  const [trip, setTrip] = useContext(Context).trip;
+  const { trip, setTrip } = useContext(Context);
   const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get(
@@ -61,7 +62,7 @@ const TicketsCatalogue = () => {
     applyFilters();
   }, [destination, date, price]);
 
-  // pagination
+  // Pagination
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const indexOfLastCard = currentPage * cardsPerPage;
@@ -81,7 +82,7 @@ const TicketsCatalogue = () => {
 
   return (
     <>
-      <div className="search-block bg-white rounded-lg overflow-hidden shadow-md p-6 mt-16 mx-4 sm:mx-8 lg:mx-24 border-black">
+      <div className="search-block bg-gradient-to-r from-red-100 to-white rounded-lg overflow-hidden shadow-md p-6 mt-16 mx-10 sm:mx-8 lg:mx-24 border-black">
         <form
           id="search-form"
           className="flex flex-col lg:flex-row items-center justify-center pl-4 sm:pl-8 lg:pl-14"
@@ -94,7 +95,7 @@ const TicketsCatalogue = () => {
               className="w-48 sm:w-36"
               type="range"
               min="0"
-              max="800"
+              max={maxPrice}
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
             />
@@ -110,12 +111,12 @@ const TicketsCatalogue = () => {
                 Search your destination:
               </label>
               <div className="flex items-center">
-                <FaLocationDot className="text-blue-500 mr-1" />
+                <FaLocationDot className="text-blue-500 mr-1 h-6 w-6" />
                 <input
                   id="destination"
                   type="input"
                   placeholder="going to..."
-                  className="w-full sm:w-72 px-3 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-red-500 focus:border-red-500"
+                  className="w-80 sm:w-72 px-4 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-red-500 focus:border-red-500"
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
@@ -130,7 +131,7 @@ const TicketsCatalogue = () => {
                 <input
                   id="date"
                   type="date"
-                  className="w-full sm:w-52 px-3 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-pink-500 focus:border-pink-500"
+                  className="w-64 sm:w-52 px-3 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-pink-500 focus:border-pink-500"
                   onChange={(e) => setDate(e.target.value)}
                 />
               </div>
