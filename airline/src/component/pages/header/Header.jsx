@@ -2,9 +2,15 @@ import Capture from "./assets/Capture.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { FaBars, FaTimes } from "react-icons/fa";
 
+import { useContext } from "react";
+import { Context } from "../../sharedComponents/contextProvider";
+
+
 const Header = () => {
+  const [currentUser,setUser]=useContext(Context).user;
   const [highlighted, setHighlight] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -137,6 +143,7 @@ const Header = () => {
           >
             Team
           </Link>
+
         </nav>
         <div className="hidden sm:flex items-center space-x-4">
           <button
