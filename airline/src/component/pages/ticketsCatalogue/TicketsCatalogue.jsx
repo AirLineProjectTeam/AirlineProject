@@ -28,6 +28,7 @@ const TicketsCatalogue = () => {
         if (data.length > 0) {
           const prices = data.map((ticket) => ticket.price);
           setMaxPrice(Math.max(...prices));
+          setPrice(Math.max(...prices));
         }
       })
       .catch((err) => console.log(err));
@@ -44,7 +45,7 @@ const TicketsCatalogue = () => {
 
     if (date) {
       Tickets = Tickets.filter((ticket) =>
-        ticket.departureTime.toString().includes(date.toString())
+        ticket.arrivalDate.toString().includes(date.toString())
       );
     }
 
@@ -60,6 +61,7 @@ const TicketsCatalogue = () => {
     applyFilters();
   }, [destination, date, price]);
 
+  // pagination
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const indexOfLastCard = currentPage * cardsPerPage;
@@ -79,28 +81,28 @@ const TicketsCatalogue = () => {
 
   return (
     <>
-      <div className="search-block bg-white rounded-lg overflow-hidden shadow-md p-6 mt-16 ml-24 mr-24 border-black">
+      <div className="search-block bg-white rounded-lg overflow-hidden shadow-md p-6 mt-16 mx-4 sm:mx-8 lg:mx-24 border-black">
         <form
           id="search-form"
-          className="flex flex-col sm:flex-row items-center justify-center pl-14"
+          className="flex flex-col lg:flex-row items-center justify-center pl-4 sm:pl-8 lg:pl-14"
           onSubmit={(e) => e.preventDefault()}
         >
           {/* Price */}
-          <div className="price mr-10 mb-5">
+          <div className="price mb-5 lg:mr-10 lg:mb-0">
             <h3 className="mb-3">Max Price: {price}$</h3>
             <input
-              className="w-52"
+              className="w-48 sm:w-36"
               type="range"
               min="0"
-              max={maxPrice}
+              max="800"
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
             />
           </div>
 
-          {/* destination */}
-          <div className="mb-4 sm:mr-4 flex">
-            <div className="mr-6">
+          {/* Destination */}
+          <div className="mb-4 lg:mb-0 flex flex-col sm:flex-row">
+            <div className="mb-4 sm:mb-0 sm:mr-4">
               <label
                 htmlFor="destination"
                 className="block text-zinc-500 mb-2 pl-1"
@@ -113,13 +115,13 @@ const TicketsCatalogue = () => {
                   id="destination"
                   type="input"
                   placeholder="going to..."
-                  className="px-3 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 w-72"
+                  className="w-full sm:w-72 px-3 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-red-500 focus:border-red-500"
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
             </div>
 
-            {/* DATE */}
+            {/* Date */}
             <div>
               <label htmlFor="date" className="block text-zinc-500 mb-2">
                 Select your date:
@@ -128,7 +130,7 @@ const TicketsCatalogue = () => {
                 <input
                   id="date"
                   type="date"
-                  className="w-52 px-3 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full sm:w-52 px-3 py-2 placeholder-gray-400 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-pink-500 focus:border-pink-500"
                   onChange={(e) => setDate(e.target.value)}
                 />
               </div>
@@ -138,21 +140,21 @@ const TicketsCatalogue = () => {
       </div>
 
       {/* CARDS */}
-      <div className="flex flex-col items-center m-20">
+      <div className="flex flex-col items-center mx-4 sm:mx-8 lg:mx-20 my-10">
         {currentCards.map((ticket, index) => (
-          <div key={index} className="w-full max-w-4xl">
-            <div className="flex items-center justify-center h-full pb-10">
-              <div className="w-full bg-gradient-to-br from-purple-200 to-red-200 rounded overflow-hidden shadow-lg border border-gray-300">
+          <div key={index} className="w-full max-w-4xl mb-10">
+            <div className="flex items-center justify-center h-full">
+              <div className="w-full bg-gradient-to-br from-purple-200 to-pink-200 rounded overflow-hidden shadow-lg border border-gray-300">
                 {/* Airline Image and Details */}
-                <div className="flex items-center justify-between bg-gray-100 p-4">
-                  <div className="flex items-center">
+                <div className="flex flex-col sm:flex-row items-center justify-between bg-gray-100 p-4">
+                  <div className="flex items-center mb-4 sm:mb-0">
                     <img
                       src={ticket.airlineimage}
                       alt={ticket.airlinename}
-                      className="w-16 h-16 mr-4 rounded-full bg-red-300"
+                      className="w-16 h-16 mr-4 rounded-full"
                     />
                     <div>
-                      <p className="text-lg font-semibold text-gray-800">
+                      <p className="text-lg font-bold text-slate-950">
                         {ticket.from} to {ticket.destination}
                       </p>
                       <p className="text-sm text-gray-600">
@@ -173,10 +175,10 @@ const TicketsCatalogue = () => {
                     {ticket.airlinename}
                   </p>
                   <p className="text-sm text-gray-600">
-                    Departure: {ticket.departureTime}
+                    Departure: {ticket.departureDate}
                   </p>
                   <p className="text-sm text-gray-600">
-                    Arrival: {ticket.arrivalTime}
+                    Arrival: {ticket.arrivalDate}
                   </p>
                   <p className="text-sm text-gray-600">
                     Description: {ticket.description}
@@ -186,7 +188,7 @@ const TicketsCatalogue = () => {
                 {/* Pricing and Booking */}
                 <div className="bg-gray-100 flex items-center justify-between p-4">
                   <div>
-                    <p className="text-lg font-semibold text-red-600">
+                    <p className="text-lg font-bold text-green-500">
                       ${ticket.price}
                     </p>
                     <p className="text-sm text-gray-600">Price per adult</p>
@@ -205,7 +207,7 @@ const TicketsCatalogue = () => {
         ))}
       </div>
 
-      {/* Pagination*/}
+      {/* Pagination */}
       <div className="flex justify-center my-4">
         {[...Array(totalPages)].map((_, index) => (
           <button
@@ -213,7 +215,7 @@ const TicketsCatalogue = () => {
             onClick={() => paginate(index + 1)}
             className={`mx-1 px-3 py-1 rounded ${
               currentPage === index + 1
-                ? "bg-green-700 text-white"
+                ? "bg-red-500 text-white"
                 : "bg-gray-200"
             }`}
           >
