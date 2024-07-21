@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import Logo from "../header/assets/LOGO.png";
+import { Context } from "../../sharedComponents/contextProvider";
+import { useNavigate } from "react-router";
 
 const TicketCard = () => {
   const [trips, setTrips] = useState([]);
   const [lowestPrice, setLowestPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
+  const navigate = useNavigate();
+
+  const [selectedTrip, setSelected] = useContext(Context).trip;
+  const [progress, setProgress] = useContext(Context).progress;
 
   useEffect(() => {
     const fetchTrips = async () => {
       try {
-        const response = await axios.get('https://airline-tickets-46241-default-rtdb.firebaseio.com/trips/Trips.json');
+        const response = await axios.get(
+          "https://airline-tickets-46241-default-rtdb.firebaseio.com/trips/Trips.json"
+        );
         if (response.data) {
-          const tripsArray = Object.keys(response.data).map(key => ({
+          const tripsArray = Object.keys(response.data).map((key) => ({
             id: key,
-            ...response.data[key]
+            ...response.data[key],
           }));
 
-          const minPrice = Math.min(...tripsArray.map(trip => parseFloat(trip.Price)));
+          const minPrice = Math.min(
+            ...tripsArray.map((trip) => parseFloat(trip.Price))
+          );
           setLowestPrice(minPrice);
           setTrips(tripsArray.slice(0, 3));
 
@@ -28,7 +38,7 @@ const TicketCard = () => {
           }
         }
       } catch (error) {
-        console.error('Error fetching trips:', error);
+        console.error("Error fetching trips:", error);
       }
     };
 
@@ -36,8 +46,9 @@ const TicketCard = () => {
   }, []);
 
   const handleTripClick = (trip) => {
-    sessionStorage.setItem('trip', JSON.stringify(trip));
-    console.log(trip);
+    setSelected(trip);
+    setProgress("Details");
+    navigate("/PaymentPage");
   };
 
   const calculateDiscountedPrice = (price) => {
@@ -47,8 +58,13 @@ const TicketCard = () => {
 
   return (
     <>
-      <h2 className="text-3xl font-bold text-center mb-4 mt-20">Discounted Ticket Specials:</h2>
-      <h4 className="text-lg text-center mb-0">Explore our current promotions on the most economical tickets available. Save more with our limited-time discounts!</h4>
+      <h2 className="text-3xl font-bold text-center mb-4 mt-20">
+        Discounted Ticket Specials:
+      </h2>
+      <h4 className="text-lg text-center mb-0">
+        Explore our current promotions on the most economical tickets available.
+        Save more with our limited-time discounts!
+      </h4>
 
       <div className="flex items-center justify-center h-full pt-20 relative mb-40">
         {/* Line at the left */}
@@ -66,23 +82,41 @@ const TicketCard = () => {
               {/* Airline Image and Details */}
               <div className="flex items-center justify-between bg-gray-100 p-4">
                 <div className="flex items-center">
-                  <img src={Logo} alt={trip.airlinename} className="w-16 h-16 mr-4 rounded-full bg-red-300" />
+                  <img
+                    src={Logo}
+                    alt={trip.airlinename}
+                    className="w-16 h-16 mr-4 rounded-full bg-red-300"
+                  />
                   <div>
-                    <p className="text-lg font-semibold text-gray-800">{trip.airlinename}</p>
-                    <p className="text-sm text-gray-600">Flight: {trip.flightNum}</p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {trip.airlinename}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Flight: {trip.flightNum}
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Available Seats: 1 {trip.availableseats}</p>
+                  <p className="text-sm text-gray-600">
+                    Available Seats: 1 {trip.availableseats}
+                  </p>
                 </div>
               </div>
 
               {/* Flight Details */}
               <div className="p-4">
-                <p className="text-lg font-semibold text-gray-800">{trip.from} to {trip.destination}</p>
-                <p className="text-sm text-gray-600">Departure: {trip.departureTime}</p>
-                <p className="text-sm text-gray-600">Arrival: {trip.arrivalTime}</p>
-                <p className="text-sm text-gray-600">Description: {trip.description}</p>
+                <p className="text-lg font-semibold text-gray-800">
+                  {trip.from} to {trip.destination}
+                </p>
+                <p className="text-sm text-gray-600">
+                  Departure: {trip.departureTime}
+                </p>
+                <p className="text-sm text-gray-600">
+                  Arrival: {trip.arrivalTime}
+                </p>
+                <p className="text-sm text-gray-600">
+                  Description: {trip.description}
+                </p>
               </div>
 
               {/* Pricing and Booking */}
@@ -96,7 +130,12 @@ const TicketCard = () => {
                   </p>
                   <p className="text-sm text-gray-600">Price per adult</p>
                 </div>
-                <button className="px-6 py-2 bg-red-500 text-white font-semibold rounded hover:bg-yellow-600" onClick={() => handleTripClick(trip)}>Book Now</button>
+                <button
+                  className="px-6 py-2 bg-red-500 text-white font-semibold rounded hover:bg-yellow-600"
+                  onClick={() => handleTripClick(trip)}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           ))}

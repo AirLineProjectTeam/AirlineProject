@@ -29,7 +29,6 @@ function Login() {
         });
         navigate("/");
         checkExpiration(user);
-
       }
     } catch (error) {
       console.log(error.message);
@@ -42,7 +41,7 @@ function Login() {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-gray-100"
+      className="flex items-center justify-center min-h-screen  bg-gray-100"
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",

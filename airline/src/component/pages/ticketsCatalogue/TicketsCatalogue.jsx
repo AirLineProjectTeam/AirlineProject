@@ -15,6 +15,7 @@ const TicketsCatalogue = () => {
   const cardsPerPage = 10;
   const maxPages = 5;
   const [trip, setTrip] = useContext(Context).trip;
+  const [progress, setProgress] = useContext(Context).progress;
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -74,7 +75,8 @@ const TicketsCatalogue = () => {
   // sessionStorage
   const saveData = (ticket) => {
     setTrip(ticket);
-    navigate("/FlightDetails");
+    setProgress("Details");
+    navigate("/PaymentPage");
   };
 
   return (
