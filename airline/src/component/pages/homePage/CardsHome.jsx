@@ -42,73 +42,40 @@ function CardsHome() {
       setSelected(trip);
       setProgress("Details")
       navigate("/PaymentPage");
+
+      sessionStorage.setItem("trip", JSON.stringify(trip));
+      console.log(trip);
+
     });
   };
 
   return (
-    <div className="bg-lightBlue p-20 pb-">
-      <div className="mt-10 sm:mt-40 text-center mb-6 sm:mb-10">
+
+    <div className="bg-gradient-to-br from-purple-200 to-red-200 p-20">
+      <div className="mt-5 sm:mt-40 text-center mb-6 sm:mb-10">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
-          Cheap flights selected for you
+          Explore the Cheapiest flights in SkyLine!
         </h1>
-        <h4 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">
-          {trips.length} routes in your area
-        </h4>
-        {lowestPrice && (
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300">
-            Lowest price: ${lowestPrice}
-          </p>
-        )}
       </div>
 
       <div className="flex flex-wrap justify-center gap-8 mt-4 sm:mt-0">
-        {trips.map((trip) => (
-          <div
-            key={trip.id}
-            className="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="#">
-              <div className="relative">
-                <img
-                  className="rounded-t-lg h-48 object-cover w-[] sm:w-[400px]"
-                  src={Image}
-                  alt={trip.description}
-                />
-                <div className="absolute inset-0 bg-black opacity-50"></div>
-              </div>
-              <div className="p-4">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  ${trip.price}
-                </h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  To: {trip.from}
-                </p>
-                <a
-                  href="#"
-                  onClick={() => handleTripClick(trip)}
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </a>
+
+        <div className="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="relative">
+            <img
+              className="rounded-t-lg object-cover w-[] sm:w-[400px]"
+              src="https://getwallpapers.com/wallpaper/full/9/8/e/425031.jpg"
+            />
           </div>
-        ))}
+          <div className="p-4">
+            <p className="text-lg font-semibold text-green-600">$150</p>
+            <p className="text-sm text-gray-600">Price per adult</p>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              To: destenation
+            </p>
+
+          </div>
+        </div>
       </div>
     </div>
   );

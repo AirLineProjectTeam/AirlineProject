@@ -6,6 +6,7 @@ import { ContextProvider } from "./component/sharedComponents/contextProvider";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import TicketsCatalogue from "./component/pages/ticketsCatalogue/TicketsCatalogue";
 import Home from "./component/pages/homePage/Homepage";
+
 import Header from "./component/pages/header/Header";
 import Footer from "./component/pages/footer/Footer";
 import Login from "./component/pages/Login-Signup/login";
@@ -13,11 +14,15 @@ import Register from "./component/pages/Login-Signup/register";
 import { PaymentContainer } from "./component/pages/details-checkout-confirmedPage/details-checkout-confirmed";
 import ContactUs from "./component/pages/ContactPage/contact";
 
+
 function App() {
   return (
     <ContextProvider>
       <BrowserRouter>
+        <Routes></Routes>
+
         <Content />
+
       </BrowserRouter>
     </ContextProvider>
   );
