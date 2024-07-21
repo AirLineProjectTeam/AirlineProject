@@ -48,6 +48,7 @@ function CardsHome() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-8 mt-4 sm:mt-0">
+
         <div className="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className="relative">
             <img
@@ -61,6 +62,7 @@ function CardsHome() {
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               To: destenation
             </p>
+
           </div>
         </div>
       </div>

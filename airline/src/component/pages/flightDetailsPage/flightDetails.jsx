@@ -1,4 +1,3 @@
-
-export const FlightDetailsPage=()=>{
-    
-}
+export const FlightDetailsPage = () => {
+  return <></>;
+};

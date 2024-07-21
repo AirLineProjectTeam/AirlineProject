@@ -10,6 +10,10 @@ import Footer from "../footer/Footer";
 import MyLocation from "../geolocation/Geolocation";
 import ImageSliderr from "../homePage/ImageSlider1";
 
+
+        
+
+
 function Home() {
   return (
     <>
