@@ -4,7 +4,7 @@ import Pilot from "./Assets/Pilot1.jpg";
 const TeamSection = () => {
   return (
     <section className="bg-gradient-to-br from-purple-200 to-red-200 py-12">
-      <div className="container mx-auto px-6 text-center">
+      <div className="container mx-auto px-16 text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">
           Meet Our Dedicated Team
         </h2>
