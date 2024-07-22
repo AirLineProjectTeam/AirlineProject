@@ -12,12 +12,15 @@ import { Link } from "react-router-dom";
 import formBackground from "./assets/bglsignup.png";
 import background from "./assets/backg.jpg";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../../sharedComponents/contextProvider";
+import { useContext } from "react";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [phoneNumber, setPhone] = useState("");
+  const [userState, setUser] = useContext(Context).user;
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -27,10 +30,13 @@ function Register() {
       const currentUser = auth.currentUser;
 
       if (currentUser) {
+
+        sessionStorage.setItem('userId', currentUser.uid);
+        sessionStorage.setItem('userEmail', currentUser.email);
         const copoun = new Copoun({
           copounID: 0,
           description: "Welcoming copoun",
-          discountPercentage: "20%",
+          discountPercentage: 20,
           expiration: getCurrentDate({ monthAdd: 1 }),
           isExpired: false,
           isUsed: false,
@@ -48,9 +54,11 @@ function Register() {
           toast.success("User logged in Successfully", {
             position: "top-center",
           });
+          setUser(user);
+          sessionStorage.setItem("user", JSON.stringify(user));
         }
       }
-      console.log("User Registered Successfully!!");
+
       toast.success("User Registered Successfully!!", {
         position: "top-center",
       });

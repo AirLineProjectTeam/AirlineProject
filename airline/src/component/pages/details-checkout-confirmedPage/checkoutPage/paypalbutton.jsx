@@ -1,7 +1,5 @@
-
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { reserveTicket } from "./checkoutPageController/reserveTicket";
-import { User } from "../../../models/user";
+
 export const PaypalButton = () => {
   const initialOptions = {
     "client-id": "test",
