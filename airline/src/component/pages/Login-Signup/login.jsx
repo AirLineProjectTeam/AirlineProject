@@ -24,6 +24,12 @@ function Login() {
       let user = await getUserData(currentUser.uid);
 
       if (user) {
+
+        
+        sessionStorage.setItem('user', JSON.stringify(user));
+        sessionStorage.setItem('userId', currentUser.uid);
+        sessionStorage.setItem('userEmail', currentUser.email);
+        
         toast.success("User logged in Successfully", {
           position: "top-center",
         });
