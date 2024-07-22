@@ -4,8 +4,6 @@ import axios from "axios";
 import Logo from "../header/assets/LOGO.png";
 import { Context } from "../../sharedComponents/contextProvider";
 import { useNavigate } from "react-router";
-
-import Logo from "../header/assets/LOGO.png";
 import { MdDiscount } from "react-icons/md";
 
 
