@@ -30,6 +30,9 @@ function Register() {
       const currentUser = auth.currentUser;
 
       if (currentUser) {
+
+        sessionStorage.setItem('userId', currentUser.uid);
+        sessionStorage.setItem('userEmail', currentUser.email);
         const copoun = new Copoun({
           copounID: 0,
           description: "Welcoming copoun",

@@ -135,13 +135,14 @@ const Header = () => {
             Support
           </Link>
           <Link
-            to="/About"
+            to="/profilepage"
             className={
-              highlighted === "Team" ? "text-red-500" : "text-gray-600"
+              highlighted === "profile" ? "text-red-500" : "text-gray-600"
             }
-            onClick={() => setHighlight("Team")}
+            onClick={() => setHighlight("profile")}
+
           >
-            Team
+            Profile
           </Link>
 
         </nav>
