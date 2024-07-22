@@ -2,7 +2,7 @@ import React from "react";
 
 const Features = () => {
   return (
-    <section className="py-6 pt-40 px-12">
+    <section className="py-6 pt-40 px-12z">
       <div className="container px-6 mt-12 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="p-6 bg-gradient-to-br from-purple-200 to-red-200 rounded-lg shadow-lg transform hover:scale-110 hover:shadow-xl transition-transform duration-300">

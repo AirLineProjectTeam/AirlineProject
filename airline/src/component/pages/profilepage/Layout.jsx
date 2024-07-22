@@ -7,7 +7,7 @@ function Layout (){
 
 return (
 <>
-<div class="p-16 mt-8 m-8">
+<div class="p-16 mt-8 m-8 ">
 <div class="p-8 bg-white shadow ">
   <div class="grid grid-cols-1 md:grid-cols-3">
     <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
@@ -34,12 +34,12 @@ return (
 
     <div class=" flex  md:mt-0 md:justify-center space-x-2 mt-2" >
 <Link to="/profilepage"
-  class="text-white py-2 px-4 uppercase rounded bg-red-500 hover:bg-red-400 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+  class="text-white py-2 px-4 uppercase rounded bg-blue-900 hover:bg-red-400 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
 >
  Profile
 </Link>
     <Link to="/Tickets"
-  class="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+  class="text-white py-2 px-4 uppercase rounded bg-pink-600 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
 >
   Tickets 
 </Link>

@@ -198,7 +198,7 @@ const TicketsCatalogue = () => {
                     <p className="text-sm text-gray-600">Price per adult</p>
                   </div>
                   <button
-                    className="px-6 py-2 bg-red-500 text-white font-semibold rounded hover:bg-yellow-600"
+                    className="px-6 py-2 bg-blue-900 text-white font-semibold rounded hover:bg-yellow-600"
                     type="click"
                     onClick={() => saveData(ticket)}
                   >
