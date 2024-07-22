@@ -4,6 +4,7 @@ import { FlightDetailsPage } from "./flightDetailsPage/flightDetails";
 import airplane from "./assets/Airplane.png";
 import { useContext } from "react";
 import { Context } from "../../sharedComponents/contextProvider";
+import { CheckoutPage } from "./checkoutPage/checkoutPage";
 
 export const PaymentContainer = () => {
   const [progress, setProgress] = useContext(Context).progress;
@@ -57,7 +58,7 @@ export const PaymentContainer = () => {
             <h1
               className="text-[1.5rem]  "
               style={{
-                color: progress == "Checkout" ? "orange" : "black",
+                color: progress == "Checkout" ? "#db7b2b" : "black",
                 transition: "all 3s",
               }}
             >
@@ -74,7 +75,13 @@ export const PaymentContainer = () => {
             </h1>
           </div>
         </div>
-        <FlightDetailsPage />
+        {progress == "Details" ? (
+          <FlightDetailsPage />
+        ) : progress == "Checkout" ? (
+          <CheckoutPage />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

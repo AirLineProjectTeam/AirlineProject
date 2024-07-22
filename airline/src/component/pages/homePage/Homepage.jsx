@@ -20,9 +20,6 @@ function Home() {
       <CardsHome />
       <MyLocation />
 
-      {/* <ul>
-           <li className="mr-5"><Link to="/Home" className="no-underline text-black">Home</Link></li>
-         </ul> */}
     </>
   );
 }

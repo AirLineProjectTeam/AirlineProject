@@ -10,12 +10,13 @@ import formBackground from "./assets/bglsignup.png";
 import background from "./assets/backg.jpg";
 import { useNavigate } from "react-router";
 import { checkExpiration } from "./Controllers/checkCopounExpiration";
-
+import { Context } from "../../sharedComponents/contextProvider";
+import { useContext } from "react";
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [userState, setUser] = useContext(Context).user;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -28,6 +29,8 @@ function Login() {
           position: "top-center",
         });
         navigate("/");
+        setUser(user);
+        sessionStorage.setItem("user", JSON.stringify(user));
         checkExpiration(user);
       }
     } catch (error) {

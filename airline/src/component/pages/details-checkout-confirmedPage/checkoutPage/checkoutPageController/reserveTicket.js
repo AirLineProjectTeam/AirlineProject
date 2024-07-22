@@ -1,5 +1,5 @@
 import axios from "axios";
-import { firebaseURL } from "../../../firebase/firebase-config";
+import { firebaseURL } from "../../../../firebase/firebase-config";
 
 export const reserveTicket = (user, flight, ticket, flightID) => {
   return new Response(async (resolve, reject) => {
