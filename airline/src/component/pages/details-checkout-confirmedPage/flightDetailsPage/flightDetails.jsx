@@ -7,13 +7,16 @@ import { Context } from "../../../sharedComponents/contextProvider";
 export const FlightDetailsPage = () => {
   const [trip, setTrip] = useContext(Context).trip;
   const [progress, setProgress] = useContext(Context).progress;
+  const [ticketType,setTicket]=useContext(Context).ticketType;
 
-  function handleBook() {
+  function handleBook(type) {
     setProgress("Checkout");
+    setTicket(type);
+
   }
   return (
     <>
-      <div className="w-[90rem] divide-y-2 flex flex-col justify-center items-center  bg-white border border-gray-200  shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div className="mb-20 w-[90rem] divide-y-2 flex flex-col justify-center items-center  bg-white border border-gray-200  shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex  w-[80rem] divide-x-2">
           <div className="flex w-[40rem]">
             <div className="flex flex-col w-[40rem] ">
@@ -72,7 +75,7 @@ export const FlightDetailsPage = () => {
             <div className="flex justify-center">
               <div
                 className="cursor-pointer w-[20rem] h-[2rem] flex items-center  bg-gray-100 border border-gray-500  shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-5"
-                onClick={handleBook}
+                onClick={()=>handleBook("Economy")}
               >
                 <div
                   className="w-[1.5rem] h-[1.5rem]"
@@ -102,7 +105,10 @@ export const FlightDetailsPage = () => {
               </span>
             </div>
             <div className="flex justify-center">
-              <div className="cursor-pointer w-[20rem] h-[2rem] flex items-center bg-gradient-to-r from-red-300 to-purple-100 border border-gray-500  shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-5">
+              <div
+                className="cursor-pointer w-[20rem] h-[2rem] flex items-center bg-gradient-to-r from-red-300 to-purple-100 border border-gray-500  shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-5"
+                onClick={()=>handleBook("Vip")}
+              >
                 <div
                   className="w-[1.5rem] h-[1.5rem]"
                   style={{
@@ -115,7 +121,7 @@ export const FlightDetailsPage = () => {
                   className="text-[1rem] ml-4 
                 "
                 >
-                  Book An Economy Ticket
+                  Book A VIP Ticket
                 </span>
               </div>
             </div>
