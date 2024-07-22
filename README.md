@@ -2,7 +2,7 @@
 
 ## What is this project?
 
-It is a forth project in Orange Coding Academy about Airline Online Tickets website for Flight Booking called "SkyLine" which includes different pages "Home, Flights, SignUp/LogIn, About Us and Contact Us, Flight Details, Checkout,  Confirmed".
+It is a fourth project in Orange Coding Academy about Airline's Online Tickets website for Flight Booking called "SkyLine" which includes different pages "Home, Flights, SignUp/LogIn, About Us and Contact Us, Flight Details, Checkout, Confirmed".
 
 ## What did we use to create SkyLine?
 
