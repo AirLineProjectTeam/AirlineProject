@@ -1,29 +1,39 @@
 import Capture from "./assets/Capture.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { FaBars, FaTimes } from "react-icons/fa";
-
-import { useContext } from "react";
 import { Context } from "../../sharedComponents/contextProvider";
-
+import logoA from "./assets/logoA.jpg"
 
 const Header = () => {
-  const [currentUser,setUser]=useContext(Context).user;
+  const [currentUser, setUser] = useContext(Context).user;
   const [highlighted, setHighlight] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  }, [setUser]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("user");
+    setUser(null);
+    navigate("/Login");
   };
 
   return (
     <header className="bg-gradient-to-r from-red-300 to-white shadow sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <div className="flex items-center">
-          <img src={Capture} alt="Logo" className="h-12 w-12 rounded-full" />
+          <img src={logoA} alt="Logo" className="h-12 w-12 rounded-full" />
           <span className="ml-2 text-xl font-bold text-gray-800">SkyLine</span>
         </div>
         <div className="sm:hidden relative">
@@ -84,24 +94,38 @@ const Header = () => {
                 >
                   Team
                 </Link>
-                <button
-                  onClick={() => {
-                    navigate("/Login");
-                    toggleMenu();
-                  }}
-                  className="text-gray-600 text-left w-full"
-                >
-                  Sign In
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/Signup");
-                    toggleMenu();
-                  }}
-                  className="px-4 py-2 bg-red-500 text-white rounded text-left w-full"
-                >
-                  Sign Up
-                </button>
+                {!currentUser ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        navigate("/Login");
+                        toggleMenu();
+                      }}
+                      className="text-gray-600 text-left w-full"
+                    >
+                      Sign In
+                    </button>
+                    <button
+                      onClick={() => {
+                        navigate("/Signup");
+                        toggleMenu();
+                      }}
+                      className="px-4 py-2 bg-red-500 text-white rounded text-left w-full"
+                    >
+                      Sign Up
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      toggleMenu();
+                    }}
+                    className="text-gray-600 text-left w-full"
+                  >
+                    Log Out
+                  </button>
+                )}
               </nav>
             </div>
           )}
@@ -110,7 +134,7 @@ const Header = () => {
           <Link
             to="/"
             className={
-              highlighted === "Home" ? "text-red-500" : "text-gray-600"
+              highlighted === "Home" ? "text-pink-800" : "text-gray-600 font-semibold"
             }
             onClick={() => setHighlight("Home")}
           >
@@ -119,7 +143,7 @@ const Header = () => {
           <Link
             to="/Flights"
             className={
-              highlighted === "Flights" ? "text-red-500" : "text-gray-600"
+              highlighted === "Flights" ? "text-pink-800" : "text-gray-600 font-semibold"
             }
             onClick={() => setHighlight("Flights")}
           >
@@ -128,41 +152,52 @@ const Header = () => {
           <Link
             to="/Support"
             className={
-              highlighted === "Support" ? "text-red-500" : "text-gray-600"
+              highlighted === "Support" ? "text-pink-800" : "text-gray-600 font-semibold"
             }
             onClick={() => setHighlight("Support")}
           >
             Support
           </Link>
-          <Link
-            to="/profilepage"
-            className={
-              highlighted === "profile" ? "text-red-500" : "text-gray-600"
-            }
-            onClick={() => setHighlight("profile")}
-
-          >
-            Profile
-          </Link>
-
+          {currentUser && (
+            <Link
+              to="/profilepage"
+              className={
+                highlighted === "profile" ? "text-pink-800" : "text-gray-600 font-semibold"
+              }
+              onClick={() => setHighlight("profile")}
+            >
+              Profile
+            </Link>
+          )}
         </nav>
         <div className="hidden sm:flex items-center space-x-4">
-          <button
-            onClick={() => {
-              navigate("/Login");
-            }}
-            className="text-gray-600"
-          >
-            Sign In
-          </button>
-          <button
-            onClick={() => {
-              navigate("/Signup");
-            }}
-            className="px-4 py-2 bg-red-500 text-white rounded"
-          >
-            Sign Up
-          </button>
+          {!currentUser ? (
+            <>
+              <button
+                onClick={() => {
+                  navigate("/Login");
+                }}
+                className="text-gray-600"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/Signup");
+                }}
+                className="px-4 py-2 bg-pink-800 text-white rounded"
+              >
+                Sign Up
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="text-white font-bold w-20 h-10 rounded-md bg-blue-900  "
+            >
+              Log Out
+            </button>
+          )}
         </div>
       </div>
     </header>
