@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Capture from "../header/assets/Capture.png";
+import logoA from "./assets/logoA.jpg"
+
 
 import {
   FaFacebook,
@@ -26,7 +28,7 @@ const FooterLinks = [
 
 const Footer = () => {
   return (
-    <div className="text-black bg-gradient-to-r from-red-300 to-white">
+    <div className="text-black bg-gradient-to-r from-purple-300 to-pink-200">
       <div className="container mx-auto px-4">
         <div
           data-aos="zoom-in"
@@ -36,7 +38,7 @@ const Footer = () => {
           <div className="py-8 px-4">
             <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
               <img
-                src={Capture}
+                src={logoA}
                 alt="SkyLine Logo"
                 className="h-12 w-12 rounded-full"
               />
@@ -113,4 +115,6 @@ const Footer = () => {
       </div>
     </div>
   );
+}
+export default Footer ;
 

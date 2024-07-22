@@ -61,7 +61,7 @@ const TicketCard = () => {
 
   return (
     <>
-      <h2 className="flex justify-evenly text-3xl font-bold  mb-4 mt-14">
+      <h2 className="flex justify-evenly text-3xl font-bold  mb-4 mt-[200px]">
         Discounted Ticket Specials
       </h2>
 
@@ -132,7 +132,7 @@ const TicketCard = () => {
                     <p className="text-sm text-gray-600">Price per adult</p>
                   </div>
                   <button
-                    className="px-6 py-2 bg-red-500 text-white font-semibold rounded hover:bg-yellow-600"
+                    className="px-6 py-2 bg-blue-900 text-white font-semibold rounded hover:bg-yellow-600"
                     onClick={() => handleTripClick(trip)}
                   >
                     Book Now

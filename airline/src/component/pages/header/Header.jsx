@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-red-300 to-white shadow sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-purple-300 to-pink-200 shadow sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <div className="flex items-center">
           <img src={logoA} alt="Logo" className="h-12 w-12 rounded-full" />
@@ -185,7 +185,7 @@ const Header = () => {
                 onClick={() => {
                   navigate("/Signup");
                 }}
-                className="px-4 py-2 bg-pink-800 text-white rounded"
+                className="px-4 py-2 bg-blue-900 text-white rounded"
               >
                 Sign Up
               </button>
