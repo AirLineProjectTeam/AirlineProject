@@ -6,16 +6,16 @@ It is a forth project in Orange Coding Academy about Airline Online Tickets webs
 
 ## What did we use to create SkyLine?
 
-We created some unique styles for SkyLine by using ReactJS and Tailwind CSS, then we created our own Database by using Firebase and which includes different details about the "User, Trips, Admin and Message between users and admin", then we got these details by using API concepts to deliver the data to the site, and finally, we created Dashboard website to make each admin "add,edit, soft delete" and can view profiles for users and the tickets for each user, and communicate with differant users by email.
+We created some unique styles for SkyLine by using ReactJS and Tailwind CSS, then we created our own Database by using Firebase which includes different details about the "User, Trips, Admin and Message between users and admin", then we got these details by using API concepts to deliver the data to the site, and finally, we created Dashboard website to make each admin "add, edit, soft delete" and can view profiles for users and the tickets for each user, and communicate with different users by email.
 
 ## What are the added features of Cima Kids?
 
 1. Sign up by Google.
 2. Payment by PayPal.
 3. Filtariation for tickets "Max Price, Destination, Date of trip" and made pagination for all tickets.
-4. Download "PDF file" in confirmed page includes all detail of trip and user.
-5. Discounted Coupun "20%" for each user will sign up in website.
-6. Header and Footer are Routaring for all pages of SkyLine.
+4. Download the "PDF file" in the confirmed page which includes all details of trip and user.
+5. Discounted Coupun "20%" for each user who will sign up in the website.
+6. Header and Footer are Routing for all pages of SkyLine.
 7. Geolocation for the user location.
 
 ## Tools we used
