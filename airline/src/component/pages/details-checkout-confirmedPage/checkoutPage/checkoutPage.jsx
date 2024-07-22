@@ -1,22 +1,28 @@
 import { CardTicket } from "./sharedComponents/ticketCard";
 import { PaypalButton } from "./paypalbutton";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../../../sharedComponents/contextProvider";
 import { useState } from "react";
 export const CheckoutPage = () => {
   const [quantity, setQuantity] = useContext(Context).quantity;
   const [trip, setTrip] = useContext(Context).trip;
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
-  const [isApplied, setApplied] = useState(false);
+  const [isApplied, setApplied] = useContext(Context).isApplied;
   const [ticketType, setTicket] = useContext(Context).ticketType;
+  const [totalPrice, setTotalPrice] = useContext(Context).totalPrice;
+  const [discountAmount, setDiscount] = useContext(Context).discountAmount;
   const price = ticketType == "Vip" ? trip?.priceVIP : trip.price;
+
   const subtotal = price * quantity;
   const discount = user.copouns[0].isUsed
     ? 0
     : user.copouns[0].discountPercentage;
-  const discountAmount = (subtotal * discount) / 100;
+  setDiscount((subtotal * discount) / 100);
   const total = subtotal - discountAmount;
 
+  useEffect(() => {
+    setTotalPrice(total);
+  });
   return (
     <>
       <div className="w-screen flex flex-col justif-center items-center">
@@ -51,11 +57,18 @@ export const CheckoutPage = () => {
                     </div>
                     <div
                       onClick={() => {
-                        setApplied(true);
+                        console.log(isApplied);
+                        if (isApplied) {
+                          setApplied(false);
+                        } else {
+                          setApplied(true);
+                        }
                       }}
                       className="transition-colors duration-500  hover:text-red-400 flex justify-center items-center w-[6rem] h-[4rem] cursor-pointer"
                     >
-                      <span className="text-[1.5rem] ">Apply</span>
+                      <span className="text-[1.5rem] ">
+                        {!isApplied ? "Apply" : "Remove"}
+                      </span>
                     </div>
                   </div>
                 </div>
