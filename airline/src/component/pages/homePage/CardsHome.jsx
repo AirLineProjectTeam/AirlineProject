@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Image from "./Assets/Image1.jpg";
+import { Context } from "../../sharedComponents/contextProvider";
+import { useNavigate } from "react-router";
 
 function CardsHome() {
   const [trips, setTrips] = useState([]);
   const [lowestPrice, setLowestPrice] = useState(null);
+  const [selectedTrip, setSelected] = useContext(Context).trip;
+  const [progress, setProgress] = useContext(Context).progress;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -34,8 +39,13 @@ function CardsHome() {
 
   const handleTripClick = (trip) => {
     trips.map(() => {
+      setSelected(trip);
+      setProgress("Details")
+      navigate("/PaymentPage");
+
       sessionStorage.setItem("trip", JSON.stringify(trip));
       console.log(trip);
+
     });
   };
 
@@ -47,6 +57,7 @@ function CardsHome() {
             Explore the Cheapiest flights in SkyLine!
           </h1>
         </div>
+
 
         <div className="flex flex-wrap justify-center gap-8 mt-4 sm:mt-0">
           <div className="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

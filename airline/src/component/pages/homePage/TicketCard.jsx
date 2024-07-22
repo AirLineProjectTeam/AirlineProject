@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { Context } from "../../sharedComponents/contextProvider";
+import { useNavigate } from "react-router";
+
 import Logo from "../header/assets/LOGO.png";
 import { MdDiscount } from "react-icons/md";
 
@@ -7,6 +10,10 @@ const TicketCard = () => {
   const [trips, setTrips] = useState([]);
   const [lowestPrice, setLowestPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
+  const navigate = useNavigate();
+
+  const [selectedTrip, setSelected] = useContext(Context).trip;
+  const [progress, setProgress] = useContext(Context).progress;
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -41,6 +48,9 @@ const TicketCard = () => {
   }, []);
 
   const handleTripClick = (trip) => {
+    setSelected(trip);
+    setProgress("Details");
+    navigate("/PaymentPage");
     sessionStorage.setItem("trip", JSON.stringify(trip));
     console.log(trip);
   };
