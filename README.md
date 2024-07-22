@@ -8,7 +8,7 @@ It is a fourth project in Orange Coding Academy about Airline's Online Tickets w
 
 We created some unique styles for SkyLine by using ReactJS and Tailwind CSS, then we created our own Database by using Firebase which includes different details about the "User, Trips, Admin and Message between users and admin", then we got these details by using API concepts to deliver the data to the site, and finally, we created Dashboard website to make each admin "add, edit, soft delete" and can view profiles for users and the tickets for each user, and communicate with different users by email.
 
-## What are the added features of Cima Kids?
+## What are the added features of SkyLine?
 
 1. Sign up by Google.
 2. Payment by PayPal.
