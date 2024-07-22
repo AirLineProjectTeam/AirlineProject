@@ -19,6 +19,7 @@ function Home() {
       <TicketCard />
       <CardsHome />
       <MyLocation />
+
     </>
   );
 }
