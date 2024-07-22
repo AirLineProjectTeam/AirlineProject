@@ -62,7 +62,7 @@ const TicketCard = () => {
   return (
     <>
       <h2 className="flex justify-evenly text-3xl font-bold  mb-4 mt-14">
-        Discounted Ticket Specials:
+        Discounted Ticket Specials
       </h2>
 
       <h4 className="text-lg text-center mb-0">

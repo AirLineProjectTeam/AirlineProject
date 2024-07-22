@@ -45,8 +45,8 @@ function Content() {
         <Route path="/Support" element={<ContactUs />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Register />} />
-        <Route path="/PaymentPage" element={<PaymentContainer />} />
         <Route path="/profilepage" element={<Profile/>} />
+        <Route path="/PaymentPage" element={<PaymentContainer/>} />
         <Route path="/Tickets" element={<Tickets/>} />
 
       </Routes>
