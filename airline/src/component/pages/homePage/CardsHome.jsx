@@ -1,84 +1,213 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import Image from "./Assets/Image1.jpg";
-import { Context } from "../../sharedComponents/contextProvider";
-import { useNavigate } from "react-router";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
 
-function CardsHome() {
-  const [trips, setTrips] = useState([]);
-  const [lowestPrice, setLowestPrice] = useState(null);
-  const [selectedTrip, setSelected] = useContext(Context).trip;
-  const [progress, setProgress] = useContext(Context).progress;
-  const navigate = useNavigate();
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 
-  useEffect(() => {
-    const fetchTrips = async () => {
-      try {
-        const response = await axios.get(
-          "https://airline-tickets-46241-default-rtdb.firebaseio.com/trips/Trips.json"
-        );
-        if (response.data) {
-          const tripsArray = Object.keys(response.data).map((key) => ({
-            id: key,
-            ...response.data[key],
-          }));
+import "../../../main.jsx";
 
-          const minPrice = Math.min(
-            ...tripsArray.map((trip) => parseFloat(trip.Price))
-          );
-          setLowestPrice(minPrice);
-          setTrips(tripsArray.slice(0, 3));
-        }
-      } catch (error) {
-        console.error("Error fetching trips:", error);
-      }
-    };
+import { EffectCoverflow, Navigation, Pagination } from "swiper";
 
-    fetchTrips();
-  }, []);
+SwiperCore.use([Autoplay]);
 
-  const handleTripClick = (trip) => {
-    trips.map(() => {
-      setSelected(trip);
-      setProgress("Details")
-      navigate("/PaymentPage");
-
-      sessionStorage.setItem("trip", JSON.stringify(trip));
-      console.log(trip);
-
-    });
+export default function App() {
+  const handleSlideChange = (swiper) => {
+    console.log('Current slide index:', swiper.activeIndex);
   };
 
   return (
     <>
-      <div className="bg-gradient-to-br from-purple-200 to-red-200 p-20">
+      <section className="bg-gradient-to-br from-purple-200 to-red-200 p-20">
+      <div >
         <div className="mt-5 sm:mt-40 text-center mb-6 sm:mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
-            Explore the Cheapiest flights in SkyLine!
+          <h1 className="text-3xl sm:text-4xl font-bold ">
+            Explore the Cheapiest flights in SkyLine
           </h1>
         </div>
-
-
-        <div className="flex flex-wrap justify-center gap-8 mt-4 sm:mt-0">
-          <div className="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div className="relative">
-              <img
-                className="rounded-t-lg object-cover w-[] sm:w-[400px]"
-                src="https://getwallpapers.com/wallpaper/full/9/8/e/425031.jpg"
-              />
-            </div>
-            <div className="p-4">
-              <p className="text-lg font-semibold text-green-600">$150</p>
-              <p className="text-sm text-gray-600">Price per adult</p>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                To: destenation
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
+        <div className="main">
+          <Swiper
+            loop={true}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            navigation={true}
+            modules={[EffectCoverflow, Pagination, Navigation]}
+            className="mySwiper"
+            effect={"coverflow"}
+            coverflowEffect={{
+              rotate: 10,
+              stretch: 50,
+              depth: 200,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            centeredSlides={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+            }}
+            onSlideChange={handleSlideChange}
+          >
+            <SwiperSlide
+              style={{
+                height: "300px",
+                width: "600px",
+                backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/London_Eye_-_tunliweb.no.JPG/1200px-London_Eye_-_tunliweb.no.JPG")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                padding: "20px",
+                borderRadius: "10px",
+              }}
+            >
+              <div
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  background: "rgba(0, 0, 0, 0.5)",
+                  borderRadius: "10px",
+                  padding: "10px",
+                  width: "100%",
+                }}
+              >
+                <h6
+                  style={{
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                    margin: "0",
+                  }}
+                >
+                  United Kingdom
+                </h6>
+                <p
+                  style={{
+                    fontSize: "1.25rem",
+                    color: "white",
+                    marginTop: "10px",
+                    margin: "0",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Round-trip from <span style={{ fontSize: "1.5rem" , color: "green" }}>US$123</span>
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide
+              style={{
+                height: "300px",
+                width: "600px",
+                backgroundImage: `url("https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2023/06/16120757/COUV-ARTICLES-1920x1080-2023-06-08T171325.416-1024x576.jpg")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                padding: "20px",
+                borderRadius: "10px",
+              }}
+            >
+              <div
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  background: "rgba(0, 0, 0, 0.5)",
+                  borderRadius: "10px",
+                  padding: "10px",
+                  width: "100%",
+                }}
+              >
+                <h6
+                  style={{
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                    margin: "0",
+                  }}
+                >
+                  France
+                </h6>
+                <p
+                  style={{
+                    fontSize: "1.25rem",
+                    color: "white",
+                    marginTop: "10px",
+                    margin: "0",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Round-trip from <span style={{ fontSize: "1.5rem", color: "#ffcc00" }}>US$128</span>
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide
+              style={{
+                height: "300px",
+                width: "600px",
+                backgroundImage: `url("https://platinumlist.net/guide/wp-content/uploads/2022/12/shutterstock_1196821240-2.webp")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                padding: "20px",
+                borderRadius: "10px",
+              }}
+            >
+              <div
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  background: "rgba(0, 0, 0, 0.5)",
+                  borderRadius: "10px",
+                  padding: "10px",
+                  width: "100%",
+                }}
+              >
+                <h6
+                  style={{
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                    margin: "0",
+                  }}
+                >
+                  United Arab Emirates
+                </h6>
+                <p
+                  style={{
+                    fontSize: "1.25rem",
+                    color: "white",
+                    marginTop: "10px",
+                    margin: "0",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Round-trip from <span style={{ fontSize: "1.5rem" , color: "#ffcc00"}}>US$137</span>
+                </p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
     </>
   );
 }
-
-export default CardsHome;

@@ -11,8 +11,6 @@ import Header from "./component/pages/header/Header";
 import Footer from "./component/pages/footer/Footer";
 import Login from "./component/pages/Login-Signup/login";
 import Register from "./component/pages/Login-Signup/register";
-import { FlightDetailsPage } from "./component/pages/flightDetailsPage/flightDetails";
-import { CheckoutPage } from "./component/pages/checkoutPage/checkoutPage";
 import Profile from "./component/pages/profilepage/Profilepage";
 import Tickets from "./component/pages/profilepage/Tickets";
 import { PaymentContainer } from "./component/pages/details-checkout-confirmedPage/details-checkout-confirmed";
@@ -47,9 +45,8 @@ function Content() {
         <Route path="/Support" element={<ContactUs />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Register />} />
-        <Route path="/FlightDetails" element={<FlightDetailsPage />} />
-        <Route path="/CheckoutPage" element={<CheckoutPage />} />
         <Route path="/profilepage" element={<Profile/>} />
+        <Route path="/PaymentPage" element={<PaymentContainer/>} />
         <Route path="/Tickets" element={<Tickets/>} />
 
       </Routes>

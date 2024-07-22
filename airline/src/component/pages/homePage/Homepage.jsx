@@ -15,9 +15,11 @@ function Home() {
     <>
       <HomeSlider />
       <Features />
-      <TeamSection />
-      <TicketCard />
+     
       <CardsHome />
+      <TicketCard />
+      <TeamSection />
+     
       <MyLocation />
 
     </>
