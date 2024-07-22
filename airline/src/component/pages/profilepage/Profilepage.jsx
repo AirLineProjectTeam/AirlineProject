@@ -53,7 +53,7 @@ function Profile() {
   return (
     <>
       <Layout />
-      <div className="flex items-center justify-center ml-32 mr-32 mt-8">
+      <div className="flex items-center justify-center ml-32 mr-32 mt-8 ">
         <div className="container max-w-screen-lg mx-auto">
           <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
             <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">

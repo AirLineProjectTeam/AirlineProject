@@ -26,7 +26,7 @@ function MyLocation() {
   const mapUrl = `https://maps.google.com/maps?q=${position.latitude},${position.longitude}&z=14&output=embed`;
 
   return (
-    <div className="mx-8 sm:mx-8 lg:mx-12 my-12 h-auto sm:h-96 p-6 shadow-md rounded-lg overflow-hidden flex flex-col lg:flex-row bg-white">
+    <div className="mx-8 sm:mx-8 lg:mx-12 mb-[120px] h-auto sm:h-96 p-6 shadow-md rounded-lg overflow-hidden flex flex-col lg:flex-row bg-white">
       <div className="sm:w-full lg:w-1/2 flex flex-col items-start px-4 sm:px-8 lg:px-12">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 text-blue-900">
           Find the Nearest Airline Companies!
@@ -44,7 +44,7 @@ function MyLocation() {
               best fits your schedule and budget.
             </p>
             <button
-              className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-all duration-300"
+              className="mt-4 px-4 py-2 bg-blue-900 text-white rounded hover:bg-red-700 transition-all duration-300 "
               onClick={Ticket}
             >
               Explore Tickets
