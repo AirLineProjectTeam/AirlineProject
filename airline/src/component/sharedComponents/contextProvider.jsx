@@ -6,7 +6,11 @@ export const ContextProvider = ({ children }) => {
   const [trip, setTrip] = useState("");
   const [progress, setProgress] = useState("Details");
   const [quantity, setQuantity] = useState(1);
-  const [ticketType, setTicket] = useState("");
+  const [ticketType, setTicketType] = useState("");
+  const [ticket, setTicket] = useState("");
+  const [totalPrice, setTotalPrice] = useState("");
+  const [isApplied, setApplied] = useState(false);
+  const [discountAmount, setDiscount] = useState(0);
 
   return (
     <Context.Provider
@@ -15,7 +19,11 @@ export const ContextProvider = ({ children }) => {
         trip: [trip, setTrip],
         progress: [progress, setProgress],
         quantity: [quantity, setQuantity],
-        ticketType: [ticketType, setTicket],
+        ticketType: [ticketType, setTicketType],
+        ticket: [ticket, setTicket],
+        totalPrice: [totalPrice, setTotalPrice],
+        isApplied: [isApplied, setApplied],
+        discountAmount:[discountAmount,setDiscount]
       }}
     >
       {children}
