@@ -28,7 +28,7 @@ We created some unique styles for SkyLine by using ReactJS and Tailwind CSS, the
 
 ### Trello Link : [Trello](https://trello.com/b/09But1KB/air-ticketing-web-aplication)
 
-### Figma Link : [Figma](https://www.figma.com/design/pUgt9dX3wmM4D8XOHbBylf/Airport-Traveling-Airplane-(Community)?node-id=26-129&t=WTwcCcYnQnU0FJdW-0)
+### Figma Link : [Figma](https://www.figma.com/design/eXvdH8VmFrveKPsbq7tybO/Untitled?node-id=0-1&t=saKFpzrRPqrB0LFt-0)
 
 ### Organaization Link : [Organaization](https://github.com/AirLineProjectTeam/AirlineProject)
 
