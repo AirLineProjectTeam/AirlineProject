@@ -184,8 +184,9 @@ const Header = () => {
         
                 
             <div>
-                <button onClick={changeEN}>EN</button>
-                <button onClick={changeAR}>AR</button>
+            <button className="bg-pink-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onClick={changeEN}>EN</button>
+<button className="bg-pink-800 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded" onClick={changeAR}>AR</button>
+
             </div>
           {currentUser && (
             <Link
