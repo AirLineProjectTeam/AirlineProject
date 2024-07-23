@@ -16,7 +16,7 @@ function HomeSlider() {
         interval={5000}
         pauseOnHover={true}
       >
-        <div className="relative h-full">
+        <div className="relative h-full ">
           <img
             src="https://4kwallpapers.com/images/wallpapers/london-city-cityscape-city-lights-dusk-purple-sky-horizon-1920x1200-4316.jpg"
             alt="London Cityscape"

@@ -47,11 +47,17 @@ const TicketCard = () => {
   }, []);
 
   const handleTripClick = (trip) => {
+    const user=JSON.parse(sessionStorage.getItem("user"));
+    if(user){
     setSelected(trip);
     setProgress("Details");
     navigate("/PaymentPage");
     sessionStorage.setItem("trip", JSON.stringify(trip));
     console.log(trip);
+    }
+    else{
+      navigate("/Login")
+    }
   };
 
   const calculateDiscountedPrice = (price) => {
@@ -61,8 +67,10 @@ const TicketCard = () => {
   const { t } = useTranslation();
   return (
     <>
+
      <h2 className="flex justify-evenly text-3xl font-bold mb-4 mt-14">
         {t('Discounted Ticket Specials')}
+
       </h2>
 
       <h4 className="text-lg text-center mb-0">
@@ -130,7 +138,7 @@ const TicketCard = () => {
                     <p className="text-sm text-gray-600">{t('Price per adult')}</p>
                   </div>
                   <button
-                    className="px-6 py-2 bg-red-500 text-white font-semibold rounded hover:bg-yellow-600"
+                    className="px-6 py-2 bg-blue-900 text-white font-semibold rounded hover:bg-yellow-600"
                     onClick={() => handleTripClick(trip)}
                   >
                     {t('Book Now')}

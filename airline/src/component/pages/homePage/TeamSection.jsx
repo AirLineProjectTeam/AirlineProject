@@ -15,8 +15,10 @@ const logoUrls = [
 const Sponsors = () => {
     const { t } = useTranslation();
     return (
+
         <section style={{ padding: '3rem 0', backgroundColor: 'white', overflow: 'hidden', textAlign: 'center' }}>
             <h2 style={{ marginBottom: '2rem', fontSize: '1.2rem', fontWeight: 'bold', color:'black' }}>{t('Popular Airlines in Middle East')} </h2>
+
             <div style={{ position: 'relative', width: '100%', height: '7rem' }}>
                 <div style={{
                     display: 'flex',

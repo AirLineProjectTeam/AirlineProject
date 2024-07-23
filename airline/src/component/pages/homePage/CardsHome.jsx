@@ -23,6 +23,7 @@ export default function App() {
 
   return (
     <>
+
       <section className="bg-gradient-to-br from-purple-200 to-red-200 p-20">
         <div>
           <div className="mt-5 sm:mt-40 text-center mb-6 sm:mb-10">
@@ -30,6 +31,7 @@ export default function App() {
               {t('Explore the Cheapest flights in SkyLine')}
             </h1>
           </div>
+
         </div>
         <div className="main">
           <Swiper

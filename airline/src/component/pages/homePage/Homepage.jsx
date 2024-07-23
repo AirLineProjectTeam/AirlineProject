@@ -6,7 +6,6 @@ import Header from "../header/Header";
 import Features from "./Features;";
 import TeamSection from "./TeamSection";
 import TicketCard from "./TicketCard";
-import Footer from "../footer/Footer";
 import MyLocation from "../geolocation/Geolocation";
 import ImageSliderr from "../homePage/ImageSlider1";
 import i18n from "./i18n";  
@@ -21,12 +20,15 @@ function Home() {
 
       <HomeSlider />
       <Features />
+
     
       <CardsHome />
       <TicketCard />
       <TeamSection />
       <MyLocation />
 
+
+      <MyLocation />
     </>
   );
 }

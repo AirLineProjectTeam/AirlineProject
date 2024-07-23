@@ -28,6 +28,7 @@ function MyLocation() {
   const { t } = useTranslation();
 
   return (
+
     <div className="mx-8 sm:mx-8 lg:mx-12 my-12 h-auto sm:h-96 p-6 shadow-md rounded-lg overflow-hidden flex flex-col lg:flex-row bg-white">
     <div className="sm:w-full lg:w-1/2 flex flex-col items-start px-4 sm:px-8 lg:px-12">
       <h2 className="text-xl sm:text-2xl font-bold mb-4 text-blue-900">
@@ -47,6 +48,23 @@ function MyLocation() {
           >
             {t('Explore Tickets')}
           </button>
+
+    
+          </div>
+        ) : (
+          <p className="text-base sm:text-lg text-gray-800">Loading...</p>
+        )}
+      </div>
+
+      {position.latitude && position.longitude && (
+        <div className="sm:w-full lg:w-1/2 mt-4 lg:mt-0 flex justify-center">
+          <iframe
+            width="90%"
+            height="300"
+            src={mapUrl}
+            title="Google Maps"
+            className="rounded-lg shadow-md"
+          ></iframe>
         </div>
       ) : (
         <p className="text-base sm:text-lg text-gray-800">{t('Loading...')}</p>

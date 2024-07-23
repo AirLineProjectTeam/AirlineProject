@@ -7,12 +7,18 @@ import { Context } from "../../../sharedComponents/contextProvider";
 export const FlightDetailsPage = () => {
   const [trip, setTrip] = useContext(Context).trip;
   const [progress, setProgress] = useContext(Context).progress;
-  const [ticketType,setTicket]=useContext(Context).ticketType;
-
+  const [ticketType, setTicket] = useContext(Context).ticketType;
+  const [isApplied, setApplied] = useContext(Context).isApplied;
+  const [totalPrice, setTotalPrice] = useContext(Context).totalPrice;
+  const [discountAmount, setDiscount] = useContext(Context).discountAmount;
+  const [quantity, setQuantity] = useContext(Context).quantity;
   function handleBook(type) {
     setProgress("Checkout");
     setTicket(type);
-
+    setApplied(false);
+    setDiscount(0);
+    setQuantity(1);
+   
   }
   return (
     <>
@@ -75,7 +81,7 @@ export const FlightDetailsPage = () => {
             <div className="flex justify-center">
               <div
                 className="cursor-pointer w-[20rem] h-[2rem] flex items-center  bg-gray-100 border border-gray-500  shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-5"
-                onClick={()=>handleBook("Economy")}
+                onClick={() => handleBook("Economy")}
               >
                 <div
                   className="w-[1.5rem] h-[1.5rem]"
@@ -107,7 +113,9 @@ export const FlightDetailsPage = () => {
             <div className="flex justify-center">
               <div
                 className="cursor-pointer w-[20rem] h-[2rem] flex items-center bg-gradient-to-r from-red-300 to-purple-100 border border-gray-500  shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-5"
-                onClick={()=>handleBook("Vip")}
+                onClick={() => {
+                  handleBook("Vip");
+                }}
               >
                 <div
                   className="w-[1.5rem] h-[1.5rem]"

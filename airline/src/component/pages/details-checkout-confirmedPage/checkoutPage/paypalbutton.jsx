@@ -1,6 +1,16 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
+import { useState } from "react";
+import { useContext } from "react";
+import { Context } from "../../../sharedComponents/contextProvider";
+import { reserveTicket } from "./checkoutPageController/reserveTicket";
+import { Ticket } from "../../../../models/ticket";
 export const PaypalButton = () => {
+  const [ticket, setTicket] = useContext(Context).ticket;
+  const [trip, setTrip] = useContext(Context).trip;
+  const [user, setUser] = useContext(Context).user;
+  const [ticketType, setTicketType] = useContext(Context).ticketType;
+  const [totalPrice, setTotalPrice] = useContext(Context).totalPrice;
+
   const initialOptions = {
     "client-id": "test",
     "enable-funding": "card",
@@ -11,23 +21,7 @@ export const PaypalButton = () => {
   return (
     <>
       <PayPalScriptProvider options={initialOptions}>
-        <PayPalButtons
-          style={{
-            shape: "rect",
-            layout: "vertical",
-          }}
-          createOrder={(data, actions) => {
-            return actions.order.create({
-              intent: "CAPTURE",
-              purchase_units: [
-                {
-                  description: "Table",
-                  amount: { currency_code: "USD", value: 200 },
-                },
-              ],
-            });
-          }}
-        />
+        
       </PayPalScriptProvider>
     </>
   );
