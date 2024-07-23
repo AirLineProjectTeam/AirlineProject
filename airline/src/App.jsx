@@ -20,6 +20,7 @@ import ContactUs from "./component/pages/ContactPage/contact";
 
 function App() {
   return (
+    
     <ContextProvider>
       <BrowserRouter>
         <Routes></Routes>
@@ -48,7 +49,7 @@ function Content() {
         <Route path="/profilepage" element={<Profile/>} />
         <Route path="/PaymentPage" element={<PaymentContainer/>} />
         <Route path="/Tickets" element={<Tickets/>} />
-
+     
       </Routes>
       {!hideHeaderFooter && <Footer />}
     </>
