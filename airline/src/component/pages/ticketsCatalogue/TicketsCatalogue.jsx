@@ -92,7 +92,7 @@ const TicketsCatalogue = () => {
 
   return (
     <>
-      <div className="search-block bg-gradient-to-r from-red-100 to-white rounded-lg overflow-hidden shadow-md p-6 mt-16 mx-10 sm:mx-8 lg:mx-24 border-black">
+      <div className="search-block bg-gradient-to-r from-purple-300 to-pink-200 rounded-lg overflow-hidden shadow-md p-6 mt-16 mx-10 sm:mx-8 lg:mx-24 border-black">
         <form
           id="search-form"
           className="flex flex-col lg:flex-row items-center justify-center pl-4 sm:pl-8 lg:pl-14"
@@ -226,7 +226,7 @@ const TicketsCatalogue = () => {
             onClick={() => paginate(index + 1)}
             className={`mx-1 px-3 py-1 rounded ${
               currentPage === index + 1
-                ? "bg-red-500 text-white"
+                ? "bg-blue-900 text-white"
                 : "bg-gray-200"
             }`}
           >

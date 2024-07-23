@@ -13,7 +13,7 @@ const logoUrls = [
 
 const Sponsors = () => {
     return (
-        <section style={{ padding: '3rem 0', backgroundColor: 'white', overflow: 'hidden', textAlign: 'center' }}>
+        <section style={{ padding: '3rem 0', backgroundColor: 'white', overflow: 'hidden', textAlign: 'center' , marginTop:'200px' , marginBottom:"200px"}}>
             <h2 style={{ marginBottom: '2rem', fontSize: '1.2rem', fontWeight: 'semibold', color:'black' }}>Popular Airlines in Middle East </h2>
             <div style={{ position: 'relative', width: '100%', height: '7rem' }}>
                 <div style={{

@@ -20,10 +20,10 @@ export default function App() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-purple-200 to-red-200 p-20">
+      <section className="bg-gradient-to-br from-purple-200 to-red-200  mt-[0%] mb-[8%] p-[90px]">
       <div >
         <div className="mt-5 sm:mt-40 text-center mb-6 sm:mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold ">
+          <h1 className="text-3xl sm:text-4xl font-bold p-10">
             Explore the Cheapiest flights in SkyLine
           </h1>
         </div>
