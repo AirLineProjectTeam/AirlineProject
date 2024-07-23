@@ -47,11 +47,17 @@ const TicketCard = () => {
   }, []);
 
   const handleTripClick = (trip) => {
+    const user=JSON.parse(sessionStorage.getItem("user"));
+    if(user){
     setSelected(trip);
     setProgress("Details");
     navigate("/PaymentPage");
     sessionStorage.setItem("trip", JSON.stringify(trip));
     console.log(trip);
+    }
+    else{
+      navigate("/Login")
+    }
   };
 
   const calculateDiscountedPrice = (price) => {
