@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Capture from "../header/assets/Capture.png";
-import logoA from "./assets/logoA.jpg"
-
+import logoA from "./assets/logoA.jpg";
 
 import {
   FaFacebook,
@@ -116,6 +115,5 @@ export const Footer = () => {
     </div>
   );
 };
-}
-export default Footer ;
 
+export default Footer;

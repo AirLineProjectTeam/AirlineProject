@@ -18,7 +18,6 @@ export const FlightDetailsPage = () => {
     setApplied(false);
     setDiscount(0);
     setQuantity(1);
-   
   }
   return (
     <>

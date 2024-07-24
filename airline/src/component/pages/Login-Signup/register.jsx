@@ -61,7 +61,11 @@ function Register() {
       toast.success("User Registered Successfully!!", {
         position: "top-center",
       });
-      navigate("/");
+      if (location == "/PaymentPage") {
+        navigate(location);
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
       toast.error(error.message, {

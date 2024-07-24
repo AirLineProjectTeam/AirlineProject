@@ -11,6 +11,9 @@ export const ContextProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState("");
   const [isApplied, setApplied] = useState(false);
   const [discountAmount, setDiscount] = useState(0);
+  const [tickets, setTickets] = useState("");
+  const [highlighted, setHighlight] = useState("Home");
+  const [location, setLocation] = useState("");
 
   return (
     <Context.Provider
@@ -23,7 +26,10 @@ export const ContextProvider = ({ children }) => {
         ticket: [ticket, setTicket],
         totalPrice: [totalPrice, setTotalPrice],
         isApplied: [isApplied, setApplied],
-        discountAmount:[discountAmount,setDiscount]
+        discountAmount: [discountAmount, setDiscount],
+        tickets: [tickets, setTickets],
+        highlighted: [highlighted, setHighlight],
+        location: [location, setLocation],
       }}
     >
       {children}

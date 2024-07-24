@@ -10,9 +10,11 @@ const TicketCard = () => {
   const [lowestPrice, setLowestPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
   const navigate = useNavigate();
+  const [highlighted, setHighlight] = useContext(Context).highlighted;
 
   const [selectedTrip, setSelected] = useContext(Context).trip;
   const [progress, setProgress] = useContext(Context).progress;
+  const [location, setLocation] = useContext(Context).location;
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -47,16 +49,20 @@ const TicketCard = () => {
   }, []);
 
   const handleTripClick = (trip) => {
-    const user=JSON.parse(sessionStorage.getItem("user"));
-    if(user){
-    setSelected(trip);
-    setProgress("Details");
-    navigate("/PaymentPage");
-    sessionStorage.setItem("trip", JSON.stringify(trip));
-    console.log(trip);
-    }
-    else{
-      navigate("/Login")
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    if (user) {
+      setSelected(trip);
+      setProgress("Details");
+      navigate("/PaymentPage");
+      sessionStorage.setItem("trip", JSON.stringify(trip));
+      setHighlight("");
+      console.log(trip);
+    } else {
+      setLocation("/PaymentPage");
+      setSelected(trip);
+      setProgress("Details");
+      setHighlight("");
+      navigate("/Login");
     }
   };
 

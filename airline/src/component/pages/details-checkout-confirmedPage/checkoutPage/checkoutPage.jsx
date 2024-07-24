@@ -12,6 +12,7 @@ export const CheckoutPage = () => {
   const [isApplied, setApplied] = useContext(Context).isApplied;
   const [ticketType, setTicket] = useContext(Context).ticketType;
   const [totalPrice, setTotalPrice] = useContext(Context).totalPrice;
+  const [tickets, setTickets] = useContext(Context).tickets;
   const [discountAmount, setDiscountAmount] = useContext(
     Context
   ).discountAmount;
@@ -57,7 +58,7 @@ export const CheckoutPage = () => {
                 </span>
               </div>
             </div>
-            {user.copouns[0].isUsed ? (
+            {user.copouns[0].isUsed || user.copouns[0].isExpired ? (
               <></>
             ) : (
               <div className="text-white">
@@ -126,7 +127,7 @@ export const CheckoutPage = () => {
                     }}
                     onApprove={(data, actions) => {
                       return actions.order.capture().then((details) => {
-                        user.copouns[0].isUsed = isApplied;
+                        console.log(user.copouns[0].isUsed);
                         let tickets = [];
                         for (let i = 1; i <= quantity; i++) {
                           const ticket = new Ticket({
@@ -139,7 +140,9 @@ export const CheckoutPage = () => {
                           });
                           tickets.push(ticket);
                         }
-                        reserveTicket(user, trip, tickets);
+                        user.copouns[0].isUsed = isApplied;
+                        setTickets(tickets);
+                        setUser(reserveTicket(user, trip, tickets));
 
                         setProgress("Confirmed");
                       });

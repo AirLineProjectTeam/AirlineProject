@@ -18,7 +18,7 @@ export const PaymentContainer = () => {
   };
 
   return (
-    <div className="w-screen flex justify-center items-center flex-col">
+    <div className="w-screen flex justify-center items-center flex-col ">
       <div
         className="w-[120rem] mb-16 flex justify-center items-center"
         style={style}
