@@ -28,7 +28,7 @@ function Home() {
       <MyLocation />
 
 
-      <MyLocation />
+   
     </>
   );
 }
