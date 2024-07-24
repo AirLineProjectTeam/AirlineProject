@@ -35,4 +35,5 @@ export const reserveTicket = async (user, flight, ticket) => {
     .catch((e) => {
       console.log(e);
     });
+  return user;
 };

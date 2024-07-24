@@ -1,9 +1,9 @@
-import vipIcon from "../assets/VipIcon.png";
+import vipIcon from "./VipIcon.png";
 import { useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../../../sharedComponents/contextProvider";
-export const CardTicket = () => {
-  const [quantity, setQuantity] = useContext(Context).quantity;
+export const PdfTicketCard = (props) => {
+  
   const [trip, setTrip] = useContext(Context).trip;
   const [ticketType, setTicket] = useContext(Context).ticketType;
   const headerColor = ticketType == "Vip" ? "text-amber-400" : "text-black";
@@ -47,30 +47,6 @@ export const CardTicket = () => {
             Gate:
             <span className="text-[1.2rem] font-normal ml-2">{trip.gate}</span>
           </h1>
-        </div>
-        <div className=" w-[15rem] flex flex-col justify-center ">
-          <div className="flex justify-center items-center">
-            <div className="ml-5 w-[6rem] h-[2rem] flex justify-between items-center divide-x-2 border-gray-300 border-solid border-2 rounded-md">
-              <div
-                onClick={() => {
-                  if (quantity != 1) setQuantity(quantity - 1);
-                }}
-                className="text-[1rem] w-[4rem]  flex justify-center items-center cursor-pointer"
-              >
-                -
-              </div>
-              <div className="text-[1rem] w-[4rem]text-white flex justify-center items-center">
-                {quantity}
-              </div>
-              <div
-                onClick={() => setQuantity(quantity + 1)}
-                className="text-[1rem] w-[4rem]  flex justify-center items-center cursor-pointer"
-              >
-                +
-              </div>
-            </div>
-            <h1 className="text-[1rem] ml-3">Quantity</h1>
-          </div>
         </div>
       </div>
     </>

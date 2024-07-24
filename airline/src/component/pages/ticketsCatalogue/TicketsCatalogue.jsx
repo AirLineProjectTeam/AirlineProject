@@ -15,10 +15,12 @@ const TicketsCatalogue = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 10;
   const maxPages = 5;
-
+  const [highlighted, setHighlight] = useContext(Context).highlighted;
   const [trip, setTrip] = useContext(Context).trip;
   const [progress, setProgress] = useContext(Context).progress;
   const navigate = useNavigate();
+
+  const [location, setLocation] = useContext(Context).location;
 
   useEffect(() => {
     axios
@@ -85,8 +87,14 @@ const TicketsCatalogue = () => {
       setProgress("Details");
       navigate("/PaymentPage");
       sessionStorage.setItem("trip", JSON.stringify(trip));
+      setHighlight("");
       console.log(trip);
     } else {
+      console.log(trip);
+      setLocation("/PaymentPage");
+      setTrip(ticket);
+      setProgress("Details");
+      setHighlight("");
       navigate("/Login");
     }
   };

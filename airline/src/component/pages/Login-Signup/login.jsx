@@ -18,6 +18,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userState, setUser] = useContext(Context).user;
+  const [location, setLocation] = useContext(Context).location;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -33,10 +34,15 @@ function Login() {
         toast.success("User logged in Successfully", {
           position: "top-center",
         });
-        navigate("/");
+
         setUser(user);
         sessionStorage.setItem("user", JSON.stringify(user));
         checkExpiration(user);
+        if (location == "/PaymentPage") {
+          navigate(location);
+        } else {
+          navigate("/");
+        }
       }
     } catch (error) {
       console.log(error.message);

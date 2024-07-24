@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Capture from "../header/assets/Capture.png";
+
 import logoA from "./assets/logoA.jpg"
 import { useTranslation } from 'react-i18next';
+
 
 
 import {

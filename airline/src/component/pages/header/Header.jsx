@@ -8,10 +8,12 @@ import logoA from "./assets/logoA.jpg"
 import { useTranslation } from 'react-i18next';
 
 
+
 const Header = () => {
   const [currentUser, setUser] = useContext(Context).user;
-  const [highlighted, setHighlight] = useState("Home");
+  const [highlighted, setHighlight] = useContext(Context).highlighted;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
@@ -157,7 +159,9 @@ const Header = () => {
           <Link
             to="/"
             className={
-              highlighted === "Home" ? "text-pink-800" : "text-gray-600 font-semibold"
+              highlighted === "Home"
+                ? "text-pink-800"
+                : "text-gray-600 font-semibold"
             }
             onClick={() => setHighlight("Home")}
           >
@@ -166,7 +170,9 @@ const Header = () => {
           <Link
             to="/Flights"
             className={
-              highlighted === "Flights" ? "text-pink-800" : "text-gray-600 font-semibold"
+              highlighted === "Flights"
+                ? "text-pink-800"
+                : "text-gray-600 font-semibold"
             }
             onClick={() => setHighlight("Flights")}
           >
@@ -175,7 +181,9 @@ const Header = () => {
           <Link
             to="/Support"
             className={
-              highlighted === "Support" ? "text-pink-800" : "text-gray-600 font-semibold"
+              highlighted === "Support"
+                ? "text-pink-800"
+                : "text-gray-600 font-semibold"
             }
             onClick={() => setHighlight("Support")}
           >
@@ -192,7 +200,9 @@ const Header = () => {
             <Link
               to="/profilepage"
               className={
-                highlighted === "profile" ? "text-pink-800" : "text-gray-600 font-semibold"
+                highlighted === "profile"
+                  ? "text-pink-800"
+                  : "text-gray-600 font-semibold"
               }
               onClick={() => setHighlight("profile")}
             >
