@@ -4,7 +4,10 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Context } from "../../sharedComponents/contextProvider";
-import logoA from "./assets/logoA.jpg";
+import logoA from "./assets/logoA.jpg"
+import { useTranslation } from 'react-i18next';
+
+
 
 const Header = () => {
   const [currentUser, setUser] = useContext(Context).user;
@@ -12,6 +15,15 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+
+  const changeEN = () => {
+      i18n.changeLanguage('en');
+  };
+  
+  const changeAR = () => {
+      i18n.changeLanguage('ar');
+  };
 
   useEffect(() => {
     const user = sessionStorage.getItem("user");
@@ -57,7 +69,7 @@ const Header = () => {
                     toggleMenu();
                   }}
                 >
-                  Home
+                 {t('Home')} 
                 </Link>
                 <Link
                   to="/Flights"
@@ -94,6 +106,18 @@ const Header = () => {
                   }}
                 >
                   Team
+                </Link>
+                <Link
+                  to="Testi18n"
+                  className={
+                    highlighted === "Testi18n" ? "text-red-500" : "text-gray-600"
+                  }
+                  onClick={() => {
+                    setHighlight("Testi18n");
+                    toggleMenu();
+                  }}
+                >
+                 Testi18n
                 </Link>
                 {!currentUser ? (
                   <>
@@ -165,6 +189,13 @@ const Header = () => {
           >
             Support
           </Link>
+        
+                
+            <div>
+            <button className="bg-pink-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onClick={changeEN}>EN</button>
+<button className="bg-pink-800 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded" onClick={changeAR} >AR</button>
+
+            </div>
           {currentUser && (
             <Link
               to="/profilepage"

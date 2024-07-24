@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Capture from "../header/assets/Capture.png";
-import logoA from "./assets/logoA.jpg";
+
+import logoA from "./assets/logoA.jpg"
+import { useTranslation } from 'react-i18next';
+
+
 
 import {
   FaFacebook,
@@ -11,6 +15,7 @@ import {
 } from "react-icons/fa";
 
 const FooterLinks = [
+  
   {
     title: "Home",
     path: "/",
@@ -23,9 +28,11 @@ const FooterLinks = [
     title: "Support",
     path: "/support",
   },
+  
 ];
 
 export const Footer = () => {
+  const { t } = useTranslation();
   return (
     <div className="text-black bg-gradient-to-r from-purple-300 to-pink-200">
       <div className="container mx-auto px-4">
@@ -41,12 +48,10 @@ export const Footer = () => {
                 alt="SkyLine Logo"
                 className="h-12 w-12 rounded-full"
               />
-              SkyLine
+              {t('SkyLine')}
             </h1>
             <p>
-              At SkyLine, we believe in providing the best travel experience to
-              our customers. Our services are designed to make your journey
-              comfortable.
+            {t('At SkyLine, we believe in providing the best travel experience to our customers. Our services are designed to make your journey comfortable.')}  
             </p>
           </div>
 
@@ -55,7 +60,7 @@ export const Footer = () => {
             <div>
               <div className="py-8 px-4">
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
-                  Important Links
+                {t('Important Links')}
                 </h1>
                 <ul className="flex flex-col gap-3">
                   {FooterLinks.map((link) => (
@@ -72,7 +77,7 @@ export const Footer = () => {
             <div>
               <div className="py-8 px-4">
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
-                  Links
+                {t('Links')}
                 </h1>
                 <ul className="flex flex-col gap-3">
                   {FooterLinks.map((link) => (
@@ -104,7 +109,7 @@ export const Footer = () => {
                 <div className="mt-6">
                   <div className="flex items-center gap-3">
                     <FaLocationArrow />
-                    <p>Zarqa, Jordan</p>
+                   <p>{t('Zarqa, Jordan')} </p> 
                   </div>
                 </div>
               </div>
