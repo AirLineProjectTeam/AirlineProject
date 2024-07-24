@@ -1,24 +1,41 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { auth } from "../../firebase/firebase-config";
-
 import { toast } from "react-toastify";
 import SignInwithGoogle from "./signInWIthGoogle";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import { getUserData } from "./Controllers/getUserData";
 import formBackground from "./assets/bglsignup.png";
 import background from "./assets/backg.jpg";
-import { useNavigate } from "react-router";
 import { checkExpiration } from "./Controllers/checkCopounExpiration";
 import { Context } from "../../sharedComponents/contextProvider";
-import { useContext } from "react";
+import axios from "axios";
+
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userState, setUser] = useContext(Context).user;
-  const [location, setLocation] = useContext(Context).location;
+  const { user: userState, setUser } = useContext(Context);
+  const [userDetails, setUserDetails] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+  });
+
+  useEffect(() => {
+    const userId = sessionStorage.getItem("userId");
+    if (userId) {
+      const firebaseUrl = `https://airline-tickets-46241-default-rtdb.firebaseio.com/Users/${userId}.json`;
+      axios.get(firebaseUrl)
+        .then(res => {
+          setUserDetails(res.data);
+        })
+        .catch(error => {
+          console.error("There was an error fetching the data!", error);
+        });
+    }
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -30,23 +47,29 @@ function Login() {
         sessionStorage.setItem("user", JSON.stringify(user));
         sessionStorage.setItem("userId", currentUser.uid);
         sessionStorage.setItem("userEmail", currentUser.email);
+        
+        // Fetch user details from Firebase
+        const userId = currentUser.uid;
+        const firebaseUrl = `https://airline-tickets-46241-default-rtdb.firebaseio.com/Users/${userId}.json`;
+        const response = await axios.get(firebaseUrl);
+        const userDetails = response.data;
 
-        toast.success("User logged in Successfully", {
-          position: "top-center",
-        });
-
-        setUser(user);
-        sessionStorage.setItem("user", JSON.stringify(user));
-        checkExpiration(user);
-        if (location == "/PaymentPage") {
-          navigate(location);
-        } else {
+        if (userDetails.status !== "deactivated") {
+          toast.success("User logged in Successfully", {
+            position: "top-center",
+          });
           navigate("/");
+          setUser(user);
+          sessionStorage.setItem("user", JSON.stringify(user));
+          checkExpiration(user);
+        } else {
+          toast.error("Your account is deactivated", {
+            position: "bottom-center",
+          });
         }
       }
     } catch (error) {
       console.log(error.message);
-
       toast.error(error.message, {
         position: "bottom-center",
       });
@@ -55,7 +78,7 @@ function Login() {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen  bg-gray-100"
+      className="flex items-center justify-center min-h-screen bg-gray-100"
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
@@ -84,7 +107,6 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Password
@@ -97,7 +119,6 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
           <div className="mb-4">
             <button
               type="submit"
@@ -106,7 +127,6 @@ function Login() {
               Submit
             </button>
           </div>
-
           <p className="text-sm text-gray-600 text-right">
             New user{" "}
             <Link to={"/Signup"} className="text-blue-600 hover:underline">
